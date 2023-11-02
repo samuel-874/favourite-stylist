@@ -1,0 +1,132 @@
+=> Monday 25 September 2023
+ # started the curly sister project
+ # worked on the signin page ( the form section )
+
+=> Tuesday 26 September 2023
+  # worked of the side board of the form pages
+  # worked on the signup page started the backend;
+
+=> Wednessday 27 September 2023
+  # implemented user registration and login on the backend
+
+=> Thursday 28 September 2023
+  # implement the forgotten password and account activation
+
+=> Friday 29 September 2023
+  # worked on the app template which contains the header , footer and drop down menu(for small screen)
+
+=> Saturday 30 September 2023
+  # started the home page design
+
+=> Sunday 1 Octomber 2023
+  # complete the home page ui
+
+=> Monday 2 Octomber 2023
+ # designed the search page 
+ # started working on the Stylist Entity on the server
+
+=> Tuesday 3 Octomber 2023
+  # implemented the stylist registration and design the stylist, like , galary,certificate entity
+  # started the stylist certification implementation
+
+=> Wednessday 4 Octomber 2023
+  # implemented the like and unlike functionality
+  # implemented the find stylist by location (which is not very perfect) and fetching list of stylist
+
+=> Thursday 5 Octomber 2023
+  # implemented the `add image to gallery` functionality along side with        deleting gallery image
+  # Added the Article Entity so stylist can post articles and users users can comment and like 
+   *> Bug : users can't post multiple comments(fixed ` Friday 13 Octomber 2023`)
+  # also implemented the rating and review
+
+=> Friday 6 Octomber 2023
+  # implemented the upload video , view ,like, unlike and comments
+  
+=> Saturday 7 Octomber 2023
+  # took some time to add a large collection of data to the database for tesing purpose
+
+=> Sunday 8 Octomber 2023
+  # designed the article page
+  # started the videos details page 
+  *)> Bug fixed : each time users fetch a video on the frontend the view count was updated by two,
+                  which i eventually discovered was an issue on the frontend, so i eventually got a fix ( Removed React.StrictMode tag from index.tsx )
+
+
+=> Monday 9 Octomber 2023
+  # complete the video page design 
+  # implement the like/unlike stylist functionaity on the frontend
+    *> Bug: user can like multiple stylist
+  # implement the 'see all' recommended stylist
+  # allow users to search stylist by location
+
+=> Tuesday 10 Ocotmber 2023
+  # perform all the microfunctionalities and fixes i.e ( pagination )
+
+=> Wednessday 11 Ocotomber 2023
+ # complete the recomended stylist page 
+ # implement the 'see all' recently viewed article 
+ # implement the 'see all' recomended video 
+ # implement the 'see all' recomended article 
+ # start the view stylist profile ( short details )
+
+
+=> Thursday 12 Octomber 2023
+ # complete the  view stylist profile ( short details )
+ # start the  view stylist profile ( full details )
+
+=> Friday 13 Octomber 2023
+  # add review dto ( on the backend )
+  # complete the  view stylist profile ( full details )
+  # recreate the database test and fix any bug
+
+=> Saturday 14 Octomber 2023
+  # started the implementation of Books on the backend
+
+=> Sunday 15 Octomber 2023
+  # complete the Booking implementation on the backend 
+  # add admin to backend 
+
+=> Monday 16 Octomber 2023
+  # designed the bookings page
+  # created the Order cards Component
+
+=> Tuesday 17 Octomber 2023
+  # designed the order details component
+  # load the data for the Bookings page and the details component
+  # implement the `add Note` funtionality
+
+=> Wednessday 18 Octomber 2023
+ # design the Servces component
+ # started design the select a stylist order page
+ 
+=> Thursday 19 Octomber 2023
+ # finished the select stylist order page
+
+=> Firday 20 Octomber 2023
+ # started the implementation of the order
+ # designed the calender component
+ # designed the client details form 
+ # designed the checkout page
+
+=> Saturday 21 Octomber 2023
+ # dealt with the date-time selection 
+ # load the data for the client details page
+ # did the submition of client info
+
+=> Sunday 22 Octomber 2023
+ # implement check checkout
+
+=> Monday 23 Octomber 2023
+ # design the client preparation form page
+
+=> Tuesday 24 Octomber 2023
+ # submit the form
+
+ => Wednessday 25 Octomber 2023
+ # integrate Zoom into our app for booking appointment
+
+ =>  Thursday 26 Octomber 2023
+ # integrated auth0 on the frontend
+
+ => Friday 27 Octomber 2023
+ # 
