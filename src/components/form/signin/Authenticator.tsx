@@ -32,7 +32,7 @@ export const Authenticator = () => {
                   localStorage.setItem("jwt",token);
                   
                 }).then(()=>{
-                    logout({ logoutParams: { returnTo: 'http://localhost:3008' } })
+                    logout({ logoutParams: { returnTo: window.location.origin } })
                 }).catch( error => {
         
                 })

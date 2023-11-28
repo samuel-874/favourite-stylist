@@ -40,7 +40,7 @@ export const CheckOut = () => {
         customizations: {
           title: "Stylist booking",
           description: 'Payment for hair Stylist',
-          logo: 'http://localhost:3008/static/media/app_logo.66b750c9f4362ac3a3fc.png',
+          logo: `${window.location.origin}/static/media/app_logo.66b750c9f4362ac3a3fc.png`,
         },
         
       };
@@ -197,14 +197,6 @@ export const CheckOut = () => {
 
 
         }
-
-    
-        
-
-
-
-        // http://localhost:3008/bookings/checkout/n1uLL3?app_state=returned&status=successful&tx_ref=n1uLL3&transaction_id=4677186
-
 
 
 
