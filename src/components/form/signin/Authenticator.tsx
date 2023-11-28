@@ -44,7 +44,7 @@ export const Authenticator = () => {
 
         setTimeout(() => {
             navigate(`/signin?status=failed&message=email-or-mobile-not-returned`);
-        }, 6000);
+        }, 15000);
 
 
     },[user])
