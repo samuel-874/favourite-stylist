@@ -10,7 +10,6 @@ import axios from "axios";
 import userIcon from "../assets/user.svg";
 import logout from "../assets/logout.svg";
 import { Article, MenuList, OrderDetail, Video } from "../types/appTypes";
-
 import { capitalize, formatCompactNumber } from "./service";
 import socialMedias from "../assets/Frame 106.svg"
 import { BoardCredentials, Bottom, Gallery, StyledSection, StyledShort } from "../components/details/stylist/Stylist.styles";
@@ -22,7 +21,7 @@ import { FilterContext } from "../components/home/Home";
 
 const file_url = process.env.REACT_APP_FURL
 
-export const Card = ():JSX.Element =>{
+export const Card = ():JSX.Element => {
     const info = useAppSelector( (state) => state.info);
     const dispatch = useAppDispatch()
     const location = window.location;
@@ -383,16 +382,6 @@ export const StylistSKeleton = () =>{
 export const GiftBoard = ({showFull,toggleShowFull}:{showFull:boolean,toggleShowFull:Function}) => {
   
 
-  useEffect(()=>{
-
-    setTimeout(() => {
-      toggleShowFull(true)
-    }, 3000);
-
-    setTimeout(() => {
-      toggleShowFull(false)
-    }, 5100);
-  },[])
 
   window.addEventListener("keydown",(e)=>{
     if(e.key === "Escape"){

@@ -68,7 +68,7 @@ export const AppTemplate = () => {
                           buttonText:"Refresh",
                           url:`refresh`
                         }))
-                    }else if(error.response.data?.error === "User was not found"){
+                    }else if(error.response?.data?.error === "User was not found"){
                         localStorage.clear();
                         window.location.assign("/signin?error=true")
                     }
@@ -103,7 +103,7 @@ export const AppTemplate = () => {
                 </ul>
                 <HeaderLeft>
                   <Bell />
-                  <ProfileView onClick={()=>toggleOpen( val => !val)}>{`${userInfo.firstname.charAt(0).toUpperCase()}${userInfo.lastname.charAt(0).toUpperCase()}`}</ProfileView>
+                  <ProfileView onClick={()=>toggleOpen( val => !val)}>{`${userInfo?.firstname.charAt(0).toUpperCase()}${userInfo?.lastname.charAt(0).toUpperCase()}`}</ProfileView>
                 </HeaderLeft>
                 { isOpened &&  <Menu list={menuList} userInfo={userInfo}  />}
                 <nav id="nav-sec">

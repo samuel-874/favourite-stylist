@@ -104,8 +104,8 @@ export const HomeInfo = () => {
               <h2>Articles and videos you viewed recently </h2> 
           </TopSection>
           <GridLayout>
-              { recentlyViewedArticles.length > 0 ?
-                recentlyViewedArticles.map( ( articleView, index ) => <ArticlePreview key={index} prop={articleView} />)
+              { recentlyViewedArticles?.length > 0 ?
+                recentlyViewedArticles?.map( ( articleView, index ) => <ArticlePreview key={index} prop={articleView} />)
                 :
                 <p>No item</p>
               }
@@ -123,11 +123,11 @@ export const HomeInfo = () => {
           
           <div style={{display:"flex",justifyContent:"space-between",flexWrap:"wrap"}}>
             { recommendedVideos?.length > 0 &&
-              recommendedVideos.map( (video,index) => <CardVideoPreview key={index} prop={video} />)
+              recommendedVideos?.map( (video,index) => <CardVideoPreview key={index} prop={video} />)
             }
           </div>
         </Section>
-    { recommendedArticles.length > 0 &&
+    { recommendedArticles?.length > 0 &&
      
        <Section>
          <TopSection>

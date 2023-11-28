@@ -4,6 +4,7 @@ import { OrderRole } from "../../types/appTypes";
 const BookingSlice = createSlice({
     name:`orderInfo`,
     initialState:{
+
         service:{
             id: 0,
             name:"",
@@ -12,14 +13,17 @@ const BookingSlice = createSlice({
             duration:"",
             image: ""
         },
+
         stylist:{
             id:0,
             name:"",
             location:"",
             mobile:"",
         },
+
         scheduledDate:"",
         userRole:OrderRole.CUSTOMER
+        
     },reducers:{
         updateOrderInfo: (state,action) => {
             state.stylist  = action?.payload?.stylist

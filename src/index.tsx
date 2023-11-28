@@ -18,7 +18,7 @@ root.render(
   domain={`${authDomain}`}
   clientId={`${clientId}`}
   authorizationParams={{
-  redirect_uri: "http://localhost:3008/callback",
+  redirect_uri: `${window.location.origin}/callback`,
   }}>
     <BrowserRouter>
      <Provider store={store}>
