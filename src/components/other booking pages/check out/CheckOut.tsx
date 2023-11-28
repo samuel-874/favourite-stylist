@@ -133,7 +133,7 @@ export const CheckOut = () => {
           url:`${base_url}/auth/users/confirm-payment`,
           data:{orderId:id,transactionReference:trans_id},
           headers:{Authorization: `Bearer ${token}`}
-      }).then( response =>{
+      }).then( response => {
           setSearchParam(new URLSearchParams())
              dispatch(setInfo({
                       icon:`check`,
@@ -231,7 +231,7 @@ export const CheckOut = () => {
                     </label>
                     <button onClick={handlePayment} >Make Payment</button>
                         <h4>OR</h4>
-                    <COButton onClick={()=>confirmPayment(true)}>{`Pay $${order?.price} Deposit`}</COButton>
+                    <COButton onClick={()=>confirmPayment(true)}>{`Pay $${order?.price||0.00} Deposit`}</COButton>
                 </CheckOutForm>
             </COLeft>
             <CORight>

@@ -118,7 +118,7 @@ export const HomeInfo = () => {
               <h1>Popular videos</h1>
               <h3 onClick={()=>navigate("/video-list")}>see all</h3>
             </span>
-            <h2>See trending stylists located around you </h2> 
+            <h2>See trending videos around you </h2> 
           </TopSection>
           
           <div style={{display:"flex",justifyContent:"space-between",flexWrap:"wrap"}}>
@@ -135,7 +135,7 @@ export const HomeInfo = () => {
               <h1>Interesting Articles</h1>
               <h3 onClick={()=>navigate("/article-list")}>see all</h3>
            </span>
-           <h2>See trending stylists located around you</h2> 
+           <h2>Read educative articles</h2> 
          </TopSection>
          <ScrollView>
           { recommendedArticles.map( (articleView,index) => <ArticlePreview key={index} prop={articleView} />) }
