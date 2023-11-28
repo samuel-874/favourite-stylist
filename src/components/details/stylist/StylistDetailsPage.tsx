@@ -19,7 +19,25 @@ export const StylistDetailsPage = () => {
   const base_url = process.env.REACT_APP_BURL;
   const file_url = process.env.REACT_APP_FURL;
   const token = localStorage.getItem("jwt");
-  const [ stylist, setStylist ] = useState<StylistDetails>();
+  const [ stylist, setStylist ] = useState<StylistDetails>({
+        profilePic:"",
+        firstname:"",
+        lastname:"",
+        email:"",
+        mobile:"",
+        bio:"",
+        isLiked:false,
+        averageRating: 0,
+        certificateType: "",
+        specialties: [],
+        location: "",
+        certificate:"",
+        facebook:"",
+        instagram:"",
+        galleryImages:[],
+        reviews: [],
+        igfollowers:0,
+  });
   const navigate = useNavigate();
 
 
