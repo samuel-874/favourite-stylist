@@ -309,7 +309,7 @@ export const Footer = () => {
     <StyledFooter>
         <section>
         <div>
-            <h1>About Curly Sister</h1>
+            <h1>About Favourite Stylist</h1>
             <p>We have created an online curated experience 
                 to help you reach your wavy and curly dreams. </p>
                 <Img src={socialMedias} />
@@ -326,7 +326,7 @@ export const Footer = () => {
         </div>
         </section>
         <span>
-            <p>© Curly sister 2021</p>
+            <p>© Favourite Stylist 2023</p>
         </span>
     </StyledFooter>
   )
@@ -458,11 +458,6 @@ export const FilterBoard = ({toggleShow}:{toggleShow:Function}) => {
 
   const applyFilter = () =>{
 
-    /*       certification:"",
-      worksWithKids:true,
-      curlySistersStylist:true,
-      colorHairStylist:true,
-      seeAll:true */
     const { worksWithKids, colorSecialist,hairType,certification } = cliterial;
     filter?.updateItemsFilter({
         ...filter.itemsFilter,
