@@ -150,7 +150,7 @@ export const CheckOut = () => {
             icon:`check`,
             showInfo:true,
             heading:'Transaction Failed!',
-            message:'Your transaction was not successful',
+            message:'Could not confirm your transaction',
             isError:true,
             buttonText:'Try again ',
             url:`close_page`

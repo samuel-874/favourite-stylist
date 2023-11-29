@@ -13,7 +13,7 @@ import { FilterBoard } from "../../general/GeneralComponents";
 
 export const RecommendedStylist = () => {
 
-    const [ requestedStylist, updateRequestStylist ] = useState<StylistCredentials[]>([]);
+    const [ requestedStylist, updateRequestStylist ] = useState<StylistCredentials[]|string>("loading...");
     const [ requestedStylistClone, updateRequestStylistClone ] = useState<StylistCredentials[]>([]);
     const filter = useContext(FilterContext);
     const base_url = process.env.REACT_APP_BURL;
@@ -28,54 +28,28 @@ export const RecommendedStylist = () => {
       setSearchParams(searchParam)
    }
 
+   const location = searchParam.get("search_query")
 
+   const searchStylist = () => {
 
+    const currentPage = searchParam.get("page");
 
-    const location = searchParam.get("search_query")
-
-    useEffect(()=>{
-      console.log(filter?.itemsFilter.filter);
-/* {
-    "certification": "",
-    "worksWithKids": true,
-    "curlySistersStylist": true,
-    "colorHairStylist": true,
-    "hairType": "",
-    "seeAll": true
-} */
-
-      if(requestedStylist && Array.isArray(requestedStylist)){
-
+    axios({
+      url:`${base_url}/auth/users/find`,
+      params:{location:location,size:5,page:currentPage},
+      headers:{Authorization:`Bearer ${token}`}
+    }).then( response => {
+        const data = response?.data            
+        setPaginationData({pageNumber:data?.pageNumber + 1,pageSize:data?.pageSize,totalItems:data?.totalItems,totalPages:data?.totalPages})
+        updateRequestStylist(data?.data)
+        updateRequestStylistClone(data?.data)
         
+    }).catch( error => {
 
-      //   if(filter?.itemsFilter?.filter?.worksWithKids || filter?.itemsFilter?.filter?.certification || filter?.itemsFilter?.filter?.colorHairStylist || filter?.itemsFilter?.filter?.worksWithKids || filter?.itemsFilter?.filter?.hairType){
-      //   const stylistArray:StylistCredentials[] = [];
+    })
+   }
 
-      //   if(filter?.itemsFilter?.filter?.worksWithKids){
-      //     const stylistWorkingWithKids =  requestedStylistClone.filter( stylist => stylist.specialties?.includes("KIDS"))
-      //     stylistArray.push(...stylistWorkingWithKids)
-      //   }
-      //   if(filter?.itemsFilter?.filter?.colorHairStylist){
-      //     const stylistSpecializedWithColors =  requestedStylistClone.filter( stylist => stylist.specialties?.includes("COLOR_SPECIALIST"))
-      //     stylistArray.push(...stylistSpecializedWithColors)
-      //   }
 
-      //   if(filter?.itemsFilter?.filter?.hairType){
-      //     const stylists =  requestedStylistClone.filter( stylist => stylist.specialties?.includes(filter?.itemsFilter?.filter?.hairType))
-      //     stylistArray.push(...stylists)
-
-      //   }
-
-      //   if(filter?.itemsFilter?.filter?.certification){
-      //     const stylists =  requestedStylistClone.filter( stylist => stylist.specialties?.includes(filter?.itemsFilter?.filter?.certification))
-      //     stylistArray.push(...stylists)
-      //   }
-
-      //   updateRequestStylist(stylistArray);
-      // }
-    }
-      
-    },[filter])
     useEffect(()=>{
 
     window.scroll({
@@ -83,21 +57,8 @@ export const RecommendedStylist = () => {
             behavior:"smooth"
     })
 
-      const currentPage = searchParam.get("page");
         if(location){
-         axios({
-          url:`${base_url}/auth/users/find`,
-          params:{location:location,size:5,page:currentPage},
-          headers:{Authorization:`Bearer ${token}`}
-        }).then( response => {
-            const data = response?.data            
-            setPaginationData({pageNumber:data?.pageNumber + 1,pageSize:data?.pageSize,totalItems:data?.totalItems,totalPages:data?.totalPages})
-            updateRequestStylist(data?.data)
-            updateRequestStylistClone(data?.data)
-            
-        }).catch( error => {
-  
-        })
+            searchStylist()
         }
      
       },[searchParam])
@@ -113,12 +74,14 @@ export const RecommendedStylist = () => {
            </TopSection>
            <div>
             <CardSection layout={filter?.itemsFilter?.display} >
-                { requestedStylist.map( stylist => 
+                { Array.isArray(requestedStylist) ?
+                 requestedStylist.map( stylist => 
                   <StylistCard 
                     key={stylist?.id} 
                     props={stylist} 
                     layout={filter?.itemsFilter.display}
                   />)
+                  : requestedStylist
                   } 
             </CardSection>
            </div>

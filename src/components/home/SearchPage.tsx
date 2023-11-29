@@ -20,7 +20,7 @@ export const SearchPage = () => {
   const [ paginationData, setPaginationData ] = useState({
     pageNumber:0,pageSize:0,totalItems:0,totalPages:3
   })
-  const [ requestStylist, updateRequestStylist ] = useState<StylistCredentials[]>([]);
+  const [ requestStylist, updateRequestStylist ] = useState<StylistCredentials[]|string>("loading...");
   
     const address = "1044 E. Green Street, Pasadena, FL, US 91106 Floria, USA";
     const stylist:StylistCredentials = {
@@ -40,10 +40,8 @@ export const SearchPage = () => {
       setSearchParams(searchParams)
     }
 
-    
-    useEffect(()=>{
-
-
+    const searchStylist = () => {
+      
       axios({
         url:`${base_url}/auth/users/find`,
         params:{location:query,size:3,page:0},
@@ -53,8 +51,15 @@ export const SearchPage = () => {
           setPaginationData({pageNumber:data?.pageNumber+1,pageSize:data?.pageSize,totalItems:data?.totalItems,totalPages:data?.totalPages})
           updateRequestStylist(data.data)
       }).catch( error => {
-
+        
       })
+    }
+
+    
+    useEffect(()=>{
+
+        searchStylist()
+
     },[query])
 
 
@@ -68,7 +73,11 @@ export const SearchPage = () => {
              <h2><strong>{`${paginationData.pageNumber * paginationData.pageSize}  of ${ paginationData.totalItems } `}</strong> stylists have been hand-vetted for your hair needs</h2> 
            </TopSection>
            <CardSection layout={filter?.itemsFilter?.display}   color="#F4F4F4" >
-              { requestStylist.map( stylist => <StylistCard key={stylist?.id} props={stylist} layout={filter?.itemsFilter.display||"grid"}    />)} 
+              { Array.isArray(requestStylist) ?
+               requestStylist.map( stylist => 
+               <StylistCard key={stylist?.id} props={stylist} layout={filter?.itemsFilter.display||"grid"}    />)
+                : "Please wait..."
+              } 
           </CardSection>
           <div style={{padding:'60px'}}>
      

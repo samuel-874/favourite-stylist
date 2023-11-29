@@ -70,6 +70,11 @@ export const VideoDetails = () => {
 
     useEffect(()=>{
 
+      window.scroll({
+        top:0,
+        behavior: "smooth"
+      })
+
         if(param.id){
              axios({
                url:`${base_url}/auth/users/view`,

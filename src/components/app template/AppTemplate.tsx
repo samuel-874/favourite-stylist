@@ -86,7 +86,7 @@ export const AppTemplate = () => {
         if(loading.isLoading){
             setTimeout(()=>{
                 dispatch(stopLoading())
-            },4000)
+            },5000)
         }
     },[loading])
     
