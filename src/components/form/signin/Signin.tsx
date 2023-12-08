@@ -145,7 +145,7 @@ export const Signin = () => {
         setTimeout(() => {
           dispatch(stopLoading());
 
-        }, 5000);
+        }, 10000);
       }
     },[loading])
 

@@ -424,7 +424,7 @@ export const Buttons = styled.div`
     overflow-y:scroll;
     /* width:50dvw; */
     padding: 10px 0  20px;
-    min-width:360px;
+    min-width:320px;
     background: #FFF;
     z-index:3;
     top:0;
@@ -437,7 +437,7 @@ export const Buttons = styled.div`
         height: 1px;
         color: #FCEAD5 !important;
 
-        ${tw`m-[20px 0] md:m-[10px 0]`}
+        ${tw`m-[10px 0] lg:m-[10px 0]`}
     }
 `
 type IsSelected ={
@@ -452,8 +452,8 @@ export const ServiceRec = styled.div<IsSelected>`
     padding:2px 2dvw;
 
     img{
-        width: 50px;
-        height: 80px;
+        width: 43px;
+        height: 70px;
         flex-shrink: 0;
         border-radius: 55px;
     }
@@ -469,7 +469,7 @@ export const ServiceRec = styled.div<IsSelected>`
 
                 p{
                     color: #000;
-                    font-size: 16px;
+                    font-size: 15px;
                     font-style: normal;
                     font-weight: 600;
                     text-transform: capitalize;
@@ -478,7 +478,7 @@ export const ServiceRec = styled.div<IsSelected>`
 
                 h4{
                     color: #FF8500;
-                    font-size: 15px;
+                    font-size: 14px;
                     font-style: normal;
                     font-weight: 600;
                     text-transform: capitalize;

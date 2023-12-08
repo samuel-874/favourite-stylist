@@ -156,14 +156,14 @@ export const Calender = ({updateShow}:{updateShow:Function}) => {
                    
                     <CSBoard>
                         <div >
-                          <h2>{`${months[currentMonth]} ${date.getFullYear()}`}</h2>
+                          <h2 className=" hidden lg:block">{`${months[currentMonth]} ${date.getFullYear()}`}</h2>
                           <Dates style={{marginTop:"30px"}}>
                             {daysOfWeek.map( (day,i) => <div key={i}>{day}</div>)}
                             {days.map( (day,i) => <DateNum key={i}  isselected={ selectedDate === day && selectedMonth === currentMonth ? "yes": "no" } onClick={()=>handleDateUpdate(day)} iscurrent={ day === date.getDate() && currentMonth === date.getMonth() ? "yes" : "no"} >{day}</DateNum>)}
                           </Dates>
                         </div>
                         <div>
-                          <h2>{`${ daysOfWeekCap[new Date(date.getFullYear(),selectedMonth,selectedDate).getDay()]}, ${months[selectedMonth]} ${selectedDate > 0 ? selectedDate : ''}`}</h2>
+                          <h2 >{`${ daysOfWeekCap[new Date(date.getFullYear(),selectedMonth,selectedDate).getDay()]}, ${months[selectedMonth]} ${selectedDate > 0 ? selectedDate : ''}`}</h2>
                           <Times  style={{marginTop:"30px"}}>
                             {availableTimes.map( (time,i) => <Time key={i} isselected={selectedTime === time.value ? "yes":"no"} onClick={()=>handleSetTime(time.value)}>{time.label}</Time> )}
         

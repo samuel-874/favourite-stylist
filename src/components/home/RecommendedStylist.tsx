@@ -45,7 +45,7 @@ export const RecommendedStylist = () => {
         updateRequestStylistClone(data?.data)
         
     }).catch( error => {
-
+        updateRequestStylist("No stylist was found")
     })
    }
 

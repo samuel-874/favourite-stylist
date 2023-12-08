@@ -1,5 +1,3 @@
-import { type } from "os";
-import { RedirectLoginOptions } from "@auth0/auth0-react/dist/auth0-context";
 
 export type MenuList = {
     label:string,

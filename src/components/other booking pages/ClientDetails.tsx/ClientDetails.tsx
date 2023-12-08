@@ -13,12 +13,13 @@ export const ClientDetails = () => {
 
   const navigate = useNavigate();
   const orderInfo = useAppSelector( state => state.orderInfo );
+  const userInfo = useAppSelector( state => state.userInfo);
   const dispatch = useAppDispatch();
   const { REACT_APP_BURL:base_url, REACT_APP_FURL:file_url } = process.env;
   const token = localStorage.getItem("jwt");
   const [ service,setService] = useState({id:0,name:"",description:"",price:0,duration:""})
     const [ formData, updateFormData ] = useState({
-        firstname:"",lastname:"",mobile:"",email:""
+        firstname: userInfo?.firstname,lastname: userInfo?.lastname,mobile:"",email: userInfo?.email
     });
     const [ formErrors, updateFormErrors ] = useState({
         firstnameError:"",lastnameError:"",mobileError:"",emailError:""
@@ -76,7 +77,7 @@ export const ClientDetails = () => {
       }
 
       updateFormErrors({...errors})
-      return Object.values(errors).every( error => error !== "");
+      return Object.values(errors).some( error => error !== "");
     }
 
 

@@ -150,7 +150,7 @@ export const SignUp = () => {
         setTimeout(() => {
           dispatch(stopLoading());
 
-        }, 5000);
+        }, 10000);
       }
     },[isLoading])
 

@@ -1,5 +1,5 @@
 import { GiftBoard } from "../../general/GeneralComponents"
-import { Filter } from "../../react-icons/Icons"
+import { EmptyState, Filter } from "../../react-icons/Icons"
 import { CardSection, Greating } from "../home/Home.styles"
 import { Books, Sect2, StyledBookings, StyledTop } from "./Bookins.styles"
 import { OrdersCard } from "../orders/OrdersCard"
@@ -60,7 +60,7 @@ export const Bookings = () => {
             setPaginationData({pageNumber:data?.pageNumber + 1,pageSize:data?.pageSize,totalItems:data?.totalItems,totalPages:data?.totalPages})
             updateOrderDetails(data?.data)
         }).catch( error => {
-
+          updateOrderDetails([])
         })
     },[searchParam])
 
@@ -88,7 +88,14 @@ export const Bookings = () => {
             </Sect2>
             <OrderContext.Provider value={{stagedOrder,setStagedOrder}}>
                 <Books>
-                { orderDetails ?( Array.isArray(orderDetails) ? orderDetails.map( (order,i) => <div key={i}><OrdersCard details={order} /></div> )  : <p>No orders yet</p> ): <p>Loading...</p>}
+                { orderDetails ?
+
+                    ( Array.isArray(orderDetails) && orderDetails.length > 0 
+                    ? orderDetails.map((order,i) => <div key={i}><OrdersCard details={order} /></div>)
+                    : <EmptyState message="No order yet" size="150px" /> )
+                    
+                 : <p>Loading...</p>
+                 }
                 </Books>
               <div onClick={()=>{
 

@@ -24,11 +24,12 @@ export const StyledCalender = styled.div`
 
      h1{
         color: #000;
-        font-size: 19px;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
         text-transform: capitalize;
+
+        ${tw` text-[15px] lg:text-[19px]`}
      }
 `
 
@@ -101,7 +102,7 @@ export const CSLeft = styled.div`
 ` 
 
 export const CSRight = styled.div`
-    ${tw` p-[10px] lg:p-[20px]`}
+    ${tw` p-[8px] lg:p-[20px]`}
 
     data{
 
@@ -119,7 +120,8 @@ export const CSRight = styled.div`
     }
 
     h1{
-        margin-bottom:20px;
+
+        ${tw` mb-1 lg:mb-[20px]`}
     }
  
 `
@@ -140,8 +142,6 @@ export const NavArrow = styled.div<{isdissabled?:"yes"|"no"}>`
 `
 
 export const Time = styled.div<{isselected?:"yes"|"no"}>`
-    width: 120px;
-    height: 40px;
     flex-shrink: 0;
     margin:8px 0;
     border-radius: 5px;
@@ -158,6 +158,8 @@ export const Time = styled.div<{isselected?:"yes"|"no"}>`
     text-align: center;
     line-height: 180%;
     cursor: pointer;
+
+    ${tw` w-[100px] h-[30px] lg:w-[120px] lg:h-[40px]`}
     
 `
 

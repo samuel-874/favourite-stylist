@@ -102,7 +102,7 @@ export const Services = ({updateShow,role,setRole}:{updateShow:Function,role:Ord
                 }
     
                
-                <Buttons style={{padding:"10px 40px"}}>
+                <Buttons className=" p-[5px] lg:pt-[10px] lg:px-[40px]" >
                   <span style={{width:"150px"}} onClick={()=>{
                     updateShow()
                     setRole(OrderRole.CUSTOMER)

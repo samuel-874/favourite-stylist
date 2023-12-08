@@ -88,7 +88,7 @@ export const ForgottenPassword = () => {
         setTimeout(() => {
           dispatch(stopLoading());
 
-        }, 5000);
+        }, 10000);
       }
     },[loading])
 

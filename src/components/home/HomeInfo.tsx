@@ -1,12 +1,12 @@
 import { CardVideoPreview, Rectangle, ArticlePreview } from "../../general/GeneralComponents";
 import { StylistCard } from "../stylist card/StylistCard";
-import { Relative, StyledCard } from "../../general/GeneralComponents.styles"
+import { Relative } from "../../general/GeneralComponents.styles"
 import { CardSection,  GridLayout,  MiddleSection, Page,  TopSection, ScrollView, Section } from "./Home.styles"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Article, OrderDetail, StylistCredentials, Video } from "../../types/appTypes"
 import { useNavigate } from "react-router-dom";
-import { StylistShortDetails } from "../details/stylist/StylistShortDetails";
+import { EmptyState } from "../../react-icons/Icons";
 
 export const HomeInfo = () => {
 
@@ -19,7 +19,6 @@ export const HomeInfo = () => {
   const [ recentOrders, updateRecentOrders ] = useState<OrderDetail[]>([]);
   const base_url = process.env.REACT_APP_BURL;
   const token = localStorage.getItem("jwt");
-  
     // axios({
       //   url:`https://ipinfo.io/json?token=bc5583e42988aa`
       // }).then( data => {
@@ -79,6 +78,9 @@ export const HomeInfo = () => {
             }
           </CardSection>
         </Relative>
+        { recentOrders?.length > 0 || recentlyViewedArticles?.length > 0
+        
+        ?
         <MiddleSection>
           <div style={{padding:"10px"}}>
            <TopSection>
@@ -91,7 +93,8 @@ export const HomeInfo = () => {
            <GridLayout>
             {recentOrders.length > 0 ?
               recentOrders.map( (order,i) => <Rectangle key={i} order={order} />)
-            :<p>No orders yet</p>
+            :
+            <EmptyState message="No Order yet" />
           }
            </GridLayout>
           </div>
@@ -105,13 +108,17 @@ export const HomeInfo = () => {
           </TopSection>
           <GridLayout>
               { recentlyViewedArticles?.length > 0 ?
-                recentlyViewedArticles?.map( ( articleView, index ) => <ArticlePreview key={index} prop={articleView} />)
+                recentlyViewedArticles?.map(( articleView, index ) => <ArticlePreview key={index} prop={articleView} />)
                 :
-                <p>No item</p>
+                <EmptyState message="Articles you read appears here" />
+
               }
            </GridLayout>
           </div>
         </MiddleSection>
+        : <div></div>
+        }
+      { recommendedVideos?.length > 0 &&
         <Section>
         <TopSection>
            <span>
@@ -122,11 +129,10 @@ export const HomeInfo = () => {
           </TopSection>
           
           <div style={{display:"flex",justifyContent:"space-between",flexWrap:"wrap"}}>
-            { recommendedVideos?.length > 0 &&
-              recommendedVideos?.map( (video,index) => <CardVideoPreview key={index} prop={video} />)
-            }
+              {recommendedVideos?.map( (video,index) => <CardVideoPreview key={index} prop={video} />)}
           </div>
         </Section>
+            }
     { recommendedArticles?.length > 0 &&
      
        <Section>

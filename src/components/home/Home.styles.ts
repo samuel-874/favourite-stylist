@@ -158,7 +158,7 @@ export const CardSection = styled.section<CardProps>`
     `
 
 export const MiddleSection = styled.section`
-    min-height:600px;
+    min-height:400px;
     display:grid;
     row-gap:50px;
     background-color:#FEF7EF;

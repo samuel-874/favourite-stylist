@@ -13,7 +13,7 @@ import { updateOrderInfo } from "../../../redux/slices/BookingSlice"
 
 export const OrderStylists = () => {
 
-  const [ requestedStylist, updateRequestStylist ] = useState<StylistCredentials[]>([]);
+  const [ requestedStylist, updateRequestStylist ] = useState<StylistCredentials[]>();
   const [ paginationData, setPaginationData ] = useState({
     pageNumber:0,pageSize:0,totalItems:0,totalPages:0
   });
@@ -53,10 +53,17 @@ export const OrderStylists = () => {
             return service?.id !== orderInfo.service.id
           })
             setOtherServices(services);
+        }).catch( error => {
+          setOtherServices([]);
         })
         }).catch( error => {
-  
+          // updateRequestStylist([])
         })
+
+        // if(orderInfo?.stylist?.id > 0){
+        //   toggleCalender(true)
+        // }
+
     }else{
       navigate("/bookings")
       
@@ -114,7 +121,10 @@ export const OrderStylists = () => {
             <OSStylistSection>
               <h2>Available Stylist</h2>
               <CardSection style={{padding:"20px 0"}}  >
-                { requestedStylist.map( stylist => 
+                { requestedStylist ?
+
+              (  requestedStylist.length > 0 ?
+                 requestedStylist.map( stylist => 
                 <div key={stylist?.id}  onClick={()=>updateSelected({
                   id:stylist?.id||0,name:`${stylist?.firstname} ${stylist?.lastname}`,location:stylist?.location,mobile:stylist?.mobile
                 })}>
@@ -125,20 +135,25 @@ export const OrderStylists = () => {
                     // layout={filter?.itemsFilter.display}
                   /></div>
               )
+              : "No stylists"
+              )
+              : "Loading..."
                   } 
             </CardSection>
             </OSStylistSection>
             <OSButton style={{opacity: selectedStylist.id > 0 ? 1 : 0.5,cursor:selectedStylist.id > 0 ? "pointer" : "not-allowed"}} onClick={handleProceed} >Proceed</OSButton>
             <OSParagraph>Other Services</OSParagraph>
               <OSBottom>
-                  { otherServices && Array.isArray(otherServices)?
+                  { otherServices 
+                  ? Array.isArray(otherServices) && otherServices?.length > 0?
                   otherServices.map( service =>
                   <ServiceCard key={service?.id}>
                   <h3>{service.name}</h3>
                   <h4>{`${service?.duration} @ $${service?.price}`}</h4>
                   <p>{service?.description}</p>
-                </ServiceCard>) 
-                :<p>unable to load service</p>}
+                </ServiceCard>)
+                :<p>could not load services</p> 
+                :<p>loading...</p>}
               </OSBottom>
            </OrderStylistStyled>
           { showCalender && <Calender updateShow={toggleCalender} />}
