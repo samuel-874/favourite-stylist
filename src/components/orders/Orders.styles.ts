@@ -424,7 +424,7 @@ export const Buttons = styled.div`
     overflow-y:scroll;
     /* width:50dvw; */
     padding: 10px 0  20px;
-    min-width:300px;
+    min-width:360px;
     background: #FFF;
     z-index:3;
     top:0;

@@ -47,7 +47,6 @@ export const Signin = () => {
             }
         })
     }
-    
 
     const handleGoogleLogin = () => {
       loginWithRedirect(
