@@ -89,11 +89,19 @@ export const Calender = ({updateShow}:{updateShow:Function}) => {
     const nav = (direction:"-1"|"+1") =>{
         if(direction === "+1"){
             if(currentMonth + 1 <= date.getMonth() +1){
-                setCurrentMonth( currentMonth => currentMonth + 1)
+                if(currentMonth + 1 > 11){
+                    setCurrentMonth(0)
+                }else{
+                    setCurrentMonth( currentMonth => currentMonth + 1)
+                }
             }
         }else if(direction === "-1"){
             if(currentMonth - 1 >= date.getMonth()){
-                setCurrentMonth( currentMonth => currentMonth - 1)
+                if(currentMonth - 1 < 0){
+                    setCurrentMonth(11)
+                }else{
+                    setCurrentMonth( currentMonth => currentMonth - 1)
+                }
             }
         }
     }
@@ -152,7 +160,12 @@ export const Calender = ({updateShow}:{updateShow:Function}) => {
               </CSLeft>
                 <LineThrough />
                 <CSRight >
-                    <data> <h1>Select an available time slot</h1> <span><NavArrow isdissabled={currentMonth + 1 <= date.getMonth() +1 ? "yes" :"no"} onClick={()=>nav("-1")}>{`<`}</NavArrow> <NavArrow isdissabled={currentMonth - 1 >= date.getMonth() ? "yes" : "no" } onClick={()=>nav("+1")}>{`>`}</NavArrow></span></data>
+                    <data> <h1>Select an available time slot</h1>
+                     <span>
+                        <NavArrow isdissabled={currentMonth + 1 <= date.getMonth() +1 ? "yes" :"no"} onClick={()=>nav("-1")}>{`<`}</NavArrow> 
+                        <NavArrow isdissabled={currentMonth - 1 >= date.getMonth() ? "yes" : "no" } onClick={()=>nav("+1")}>{`>`}</NavArrow>
+                    </span>
+                    </data>
                    
                     <CSBoard>
                         <div >
