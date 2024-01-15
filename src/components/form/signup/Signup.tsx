@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks/hooks';
 import { startLoading, stopLoading } from '../../../redux/slices/LoadingSlice';
 import { setInfo } from '../../../redux/slices/InfoSlice';
 import { registerUser } from '../../../general/service';
-
+import { useAuth0 } from '@auth0/auth0-react';
 
 export const SignUp = () => {
     
@@ -23,6 +23,9 @@ export const SignUp = () => {
       confirmPasswordError:'',
     })
 
+    const { loginWithRedirect } = useAuth0();
+
+
     const [ formData, setFormData ] = useState({
       fullname:'',
       email:'',
@@ -30,6 +33,26 @@ export const SignUp = () => {
       confirmPassword:'',
     })
 
+    const handleGoogleLogin = () => {
+      loginWithRedirect(
+        {
+        authorizationParams: {
+           connection: 'google-oauth2'
+        }
+      }
+      );
+    }
+  
+    const handleFacebookLogin = () => {
+      loginWithRedirect(
+        {
+        authorizationParams: {
+           connection: 'facebook'
+        }
+      }
+      );
+    }
+  
     
 
     const updateForm = ( e:React.ChangeEvent<HTMLInputElement> ):void =>{
