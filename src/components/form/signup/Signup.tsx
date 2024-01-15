@@ -228,11 +228,11 @@ export const SignUp = () => {
                 <Footer >
                     <div style={{border:'1px solid gray'}}>
                         <GoogleLogo />
-                        <p>Sign In with Google</p>
+                        <p>Sign Up with Google</p>
                     </div>  
                     <div style={{backgroundColor:'#0077B7',color:'white'}}>
                         <FaceBookLogo />
-                        <p>Sign In with Facebook</p>
+                        <p>Sign Up with Facebook</p>
                     </div>
                 </Footer>
                 <h4>By creating an account, you agree to Curly Sister’s <a href="">Terms of Use</a> and <a href="">Privacy Policy.</a></h4>
