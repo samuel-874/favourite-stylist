@@ -7,7 +7,7 @@ export const StyledSignin = styled.div`
     display:flex;
     
     & section {
-        width:400px;
+        flex: 1;
         background-color:#FEF7EF;
         ${tw` hidden lg:block p-[40px] `}
       
@@ -25,7 +25,7 @@ export const StyledSignin = styled.div`
     }
 
     & main {
-        flex:2;
+        flex:3;
         ${tw`   `}
     }
 `
@@ -38,9 +38,11 @@ export const Img = styled.img`
 `
 
 export const RightSection = styled.div`
+            display: flex;
+            flex-direction: column;
             margin-top:17dvh;
             padding-top:20px;
-            width:400px;
+            max-width:400px;
             margin-left:auto;
             margin-right:auto;
             ${tw` mx-auto lg:ml-[10dvh] px-[4dvh] `}
@@ -55,13 +57,13 @@ export const RightSection = styled.div`
             & h4{
                 color: #8A8077;
                 display:inline-block;
-                text-align: center;
+                /* text-align: center; */
                 font-size: 13px;
                 font-weight: 400;
                 margin-top:10px;
                 margin-bottom:5px;
                 line-height: 140.625%;
-                white-space:nowrap;
+                white-space:wrap;
 
             }
 
@@ -109,7 +111,7 @@ export const Input = styled.div`
            font-size:14px;
                 
             & span {
-               width:100%;
+               /* width:100%; */
                display:flex;
                margin-top:5px;
                height:40px;
@@ -138,8 +140,11 @@ export const CheckBox = styled.div`
             font-weight: 500;
             line-height: 140.625%;
             letter-spacing: -0.05em;
+            justify-content: start;
+            text-align: left;
 
-    ${tw` flex my-4 truncate `}
+
+    ${tw` flex my-4  `}
 `
 
 export const StyledButton = styled.button`
@@ -171,13 +176,18 @@ export const Break = styled.div`
 `
 
 export const Footer = styled.div`
-    display:flex;
+    display: flex;
     justify-content:space-between;
     align-items:center;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 15px;
 
     & div{
        display:flex;
+       flex: 1;
        align-items:center;
+       justify-content:center;
        border-radius:2px;
        cursor: pointer;
 
@@ -188,6 +198,7 @@ export const Footer = styled.div`
             margin-left:6px;
             font-size:12px;
             font-weight:600;
+            white-space: nowrap;
         }
     }
 `
